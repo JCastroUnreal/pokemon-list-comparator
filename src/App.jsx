@@ -21,7 +21,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="app">
         <h1>Lista Pokémon</h1>
         <div className="pokemon-list">
           {pokemonList.map((pokemon, index) => (

@@ -1,7 +1,10 @@
-.pokemon-list {
-  align-items: center;
+.app {
   margin-left: 30px;
   margin-right: 30px;
+}
+
+.pokemon-list {
+  align-items: center;
 }
 
 .pokemon-card {
