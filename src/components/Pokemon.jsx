@@ -1,6 +1,33 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+// Función para obtener datos de la API de Pokémon y guardarlos en sessionStorage
+function fetchAndStorePokemon(pokemonName) {
+  fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error en la solicitud");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Datos del Pokémon:", data);
+
+      // Guarda el nombre del Pokémon en sessionStorage
+      sessionStorage.setItem("pokemonName", data.name);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+
+// Llamada a la función
+fetchAndStorePokemon("ditto");
+
+// Recuperar el nombre del Pokémon desde sessionStarage
+const storedPokemon = sessionStorage.getItem("pokemonName");
+console.log("Nombre del Pokémon almacenado:", storedPokemon);
+
 function Pokemon({ pokemonName }) {
   const [pokemon, setPokemon] = useState(null);
   const [loading, setLoading] = useState(true);
